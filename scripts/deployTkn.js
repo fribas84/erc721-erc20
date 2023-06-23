@@ -8,13 +8,14 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const initialSupply = 1000000;
+  const initialSupply = hre.ethers.parseEther("100000000000");
   console.log(initialSupply);
   const myToken = await hre.ethers.deployContract("MyToken",[initialSupply]);
 
   await myToken.waitForDeployment();
 
   console.log("Contract Deployed to: ", myToken.target);
+  
 
 
 }
