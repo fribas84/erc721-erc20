@@ -9,13 +9,13 @@ const hre = require("hardhat");
 async function main() {
 
 
-  const myNFT = await hre.ethers.deployContract("MyNFT",["MyNFT","MNFT"]);
+  const myNFT = await hre.ethers.deployContract("MyNFT",["crypto cert","crycert"]);
 
   await myNFT.waitForDeployment();
 
   console.log("Contract Deployed to: ", myNFT.target);
 
-  await myNFT.mint("https://ipfs.io/ipfs/Qmd7gz9pE9HAct54JfsC6yhczdyrkcjff4ymTSd7CG2XBM");
+  await myNFT.mint("https://ipfs.io/ipfs/QmQvWkyq6hbBjYgfvZvQE8Nb979gCeKz1FP5wbUwSC1KE7");
   console.log("NFT Minted successfully!");
 }
 
