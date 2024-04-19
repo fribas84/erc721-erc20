@@ -7,16 +7,27 @@
 const hre = require("hardhat");
 
 async function main() {
-
-
-  const myNFT = await hre.ethers.deployContract("MyNFT",["MyNFT","MNFT"]);
-
+  const myNFT = await hre.ethers.deployContract("MyNFT", [
+    "Crypto Certificate",
+    "crycert",
+  ]);
   await myNFT.waitForDeployment();
+  console.log("NFT Contract Deployed to: ", myNFT.target);
 
-  console.log("Contract Deployed to: ", myNFT.target);
+  const myToken = await hre.ethers.deployContract("MyToken");
+  await myToken.waitForDeployment();
+  console.log("MyToken Contract Deployed to: ", myToken.target);
 
-  await myNFT.mint("https://ipfs.io/ipfs/Qmd7gz9pE9HAct54JfsC6yhczdyrkcjff4ymTSd7CG2XBM");
-  console.log("NFT Minted successfully!");
+  const faucet = await hre.ethers.deployContract("Faucet", [myToken.target]);
+  await faucet.waitForDeployment();
+  await myToken.setFaucet(faucet.target);
+  console.log("Faucet Contract Deployed to: ", faucet.target);
+
+  const etherWallet = await hre.ethers.deployContract("EtherWallet", [
+    myToken.target,
+  ]);
+  await etherWallet.waitForDeployment();
+  console.log("EtherWallet Contract Deployed to: ", etherWallet.target);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -25,4 +36,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-

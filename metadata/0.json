@@ -1,0 +1,30 @@
+{
+    "name" : "Diplo Logo Certificate",
+    "description": "Certificate about a crypto training",
+    "image" : "https://ipfs.io/ipfs/QmZ1ySGc4DaPix4nAdMSpJnw7Qwopn48FGZ2PnzGMx4bWC",
+    "attributes": [
+        {
+            "trait_type": "Knowledge",
+            "value": 90,
+            "max_value": 100
+        },
+        {
+            "trait_type": "Level", 
+            "value": 5
+        },
+        {
+            "display_type": "number",
+            "trait_type": "Generation",
+            "value": 1
+        },
+        {
+            "trait_type": "Interesting",
+            "value": "True"
+        },
+        {
+            "display_type": "date", 
+            "trait_type": "Lecture date", 
+            "value": 1687563884
+        }
+    ]
+}
